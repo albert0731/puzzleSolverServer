@@ -15,7 +15,7 @@ var MAX_SOLUTIONS_COUNT = ROWS * COLS * 8 * 2;
 var MAX_LENGTH;
 exports.list = function(req, res){
   var inputboard = req.query.board;
-  
+  MAX_LENGTH = req.query.deep;
   var sourceboard = get_board(inputboard);
   var allsolutions;
   
@@ -342,7 +342,7 @@ function in_place_swap_orb_in_solution(solution, dir) {
 }
 
 function get_max_path_length() {
-    return 16;
+    return MAX_LENGTH;
 }
 
 function is_8_dir_movement_supported() {
