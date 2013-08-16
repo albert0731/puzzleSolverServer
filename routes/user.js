@@ -18,6 +18,9 @@ exports.list = function(req, res){
   MAX_LENGTH = req.query.deep;
   var sourceboard = get_board(inputboard);
   var allsolutions;
+  if(inputboard.length!=30){
+	  res.send("ERROR");
+  }
   
   solve_board(sourceboard, function(p, max_p) {
   
