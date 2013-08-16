@@ -349,7 +349,7 @@ function get_max_path_length() {
 }
 
 function is_8_dir_movement_supported() {
-    return true;
+    return false;
 }
 
 function evolve_solutions(solutions, weights, dir_step) {
