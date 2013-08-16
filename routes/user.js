@@ -11,7 +11,7 @@ var ORB_WIDTH = 60;
 var ORB_HEIGHT = 60;
 var MULTI_ORB_BONUS = 0.25;
 var COMBO_BONUS = 0.25;
-var MAX_SOLUTIONS_COUNT = ROWS * COLS * 8 * 2;
+var MAX_SOLUTIONS_COUNT = ROWS * COLS * 8 * 2* 50;
 var MAX_LENGTH;
 exports.list = function(req, res){
   var inputboard = req.query.board;
@@ -383,7 +383,9 @@ function solve_board(board, step_callback, finish_callback) {
 
     for (var i = 0, s = 0; i < ROWS; ++ i) {
         for (var j = 0; j < COLS; ++ j, ++ s) {
+        	if(i == 0 || i == 4 || j == 0 || j == 5){
             solutions[s] = copy_solution_with_cursor(seed_solution, i, j);
+        	}
         }
     }
 
