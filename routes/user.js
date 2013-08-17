@@ -10,7 +10,7 @@ var ORB_Y_SEP = 64;
 var ORB_WIDTH = 60;
 var ORB_HEIGHT = 60;
 var MULTI_ORB_BONUS = 0.25;
-var COMBO_BONUS = 0.25;
+var COMBO_BONUS = 0.1;
 var MAX_SOLUTIONS_COUNT = ROWS * COLS * 8 * 2* 50;
 var MAX_LENGTH;
 exports.list = function(req, res){
