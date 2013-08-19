@@ -13,6 +13,7 @@ var MULTI_ORB_BONUS = 0.25;
 var COMBO_BONUS = 0.1;
 var MAX_SOLUTIONS_COUNT = ROWS * COLS * 8 * 2* 50;
 var MAX_LENGTH;
+var WEIGHTS;
 exports.list = function(req, res){
   var inputboard = req.query.board;
   MAX_LENGTH = req.query.deep;
@@ -20,6 +21,13 @@ exports.list = function(req, res){
   var allsolutions;
   if(inputboard.length!=30){
 	  res.send("ERROR");
+  }
+  var w  = req.query.weight;
+  w = w.split(",");
+  if(w.length!=12){
+	  set_Norweights();
+  } else{
+	  set_Cosweights(w);
   }
   
   solve_board(sourceboard, function(p, max_p) {
@@ -111,6 +119,10 @@ function advance_type(type, dt) {
 }
 
 function get_weights() {
+    return WEIGHTS;
+}
+
+function set_Norweights() {
     var weights = new Array(TYPES);
     for (var i = 0; i < TYPES; ++ i) {
         weights[i] = {
@@ -118,7 +130,18 @@ function get_weights() {
             mass: 3,
         };
     }
-    return weights;
+    WEIGHTS = weights;
+}
+
+function set_Cosweights(w) {
+    var weights = new Array(TYPES);
+    for (var i = 0; i < TYPES; ++ i) {
+        weights[i] = {
+            normal: w[i*2],
+            mass: w[i*2+1],
+        };
+    }
+    WEIGHTS = weights;
 }
 
 function find_matches(board) {
