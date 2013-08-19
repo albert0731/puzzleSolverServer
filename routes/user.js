@@ -24,7 +24,7 @@ exports.list = function(req, res){
   }
   var w  = req.query.weight;
   w = w.split(",");
-  if(w.length!=12){
+  if(w.length!=14){
 	  set_Norweights();
   } else{
 	  set_Cosweights(w);
