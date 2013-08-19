@@ -11,7 +11,7 @@ var ORB_WIDTH = 60;
 var ORB_HEIGHT = 60;
 var MULTI_ORB_BONUS = 0.25;
 var COMBO_BONUS = 0.1;
-var MAX_SOLUTIONS_COUNT = ROWS * COLS * 8 * 2* 50;
+var MAX_SOLUTIONS_COUNT = ROWS * COLS * 8 * 2* 5;
 var MAX_LENGTH;
 var WEIGHTS;
 exports.list = function(req, res){
@@ -22,7 +22,7 @@ exports.list = function(req, res){
   if(inputboard.length!=30){
 	  res.send("ERROR");
   }
-  var w  = req.query.weight;
+  var w  = req.query.weight+"";
   w = w.split(",");
   if(w.length!=12){
 	  set_Norweights();
